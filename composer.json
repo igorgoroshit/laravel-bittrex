@@ -16,8 +16,7 @@
   ],
   "require": {
     "php": ">=5.5.9",
-    "ext-curl": "*",
-    "laravel/framework": ">=5.3"
+    "ext-curl": "*"
   },
   "autoload": {
     "psr-4": {
