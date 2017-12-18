@@ -55,7 +55,7 @@ class Client implements ClientContract
      * @return array
      */
     public function getMarkets() {
-        return $this->public('getmarkets');
+        return $this->publicApi('getmarkets');
     }
 
     /**
@@ -64,7 +64,7 @@ class Client implements ClientContract
      * @return array
      */
     public function getCurrencies() {
-        return $this->public('getcurrencies');
+        return $this->publicApi('getcurrencies');
     }
 
     /**
@@ -74,7 +74,7 @@ class Client implements ClientContract
      * @return array
      */
     public function getTicker($market) {
-        return $this->public('getticker', [
+        return $this->publicApi('getticker', [
             'market' => $market
         ]);
     }
@@ -85,7 +85,7 @@ class Client implements ClientContract
      * @return array
      */
     public function getMarketSummaries() {
-        return $this->public('getmarketsummaries');
+        return $this->publicApi('getmarketsummaries');
     }
 
     /**
@@ -94,7 +94,7 @@ class Client implements ClientContract
      * @return array
      */
     public function getMarketSummariesV2() {
-        return $this->public('Markets/GetMarketSummaries', [
+        return $this->publicApi('Markets/GetMarketSummaries', [
             // no extra data
         ], 'v2.0');
     }
@@ -106,7 +106,7 @@ class Client implements ClientContract
      * @return array
      */
     public function getMarketSummary($market) {
-        return $this->public('getmarketsummary', [
+        return $this->publicApi('getmarketsummary', [
             'market' => $market,
         ]);
     }
@@ -120,7 +120,7 @@ class Client implements ClientContract
      * @return array
      */
     public function getOrderBook($market, $type, $depth=20) {
-        return $this->public('getorderbook', [
+        return $this->publicApi('getorderbook', [
             'market' => $market,
             'type' => $type,
             'depth' => $depth,
@@ -134,7 +134,7 @@ class Client implements ClientContract
      * @return array
      */
     public function getMarketHistory($market) {
-        return $this->public('getmarkethistory', [
+        return $this->publicApi('getmarkethistory', [
             'market' => $market,
         ]);
     }
@@ -166,7 +166,7 @@ class Client implements ClientContract
      */
     public function getChartData($marketName, $tickInterval='hour') {
         $timestamp = strtotime('now');
-        return $this->public('market/GetTicks', [
+        return $this->publicApi('market/GetTicks', [
             'marketName' => $marketName,
             'tickInterval' => $tickInterval,
             '_' => $timestamp,
@@ -343,7 +343,7 @@ class Client implements ClientContract
      * @param array $parameters
      * @return array
      */
-    function public ($segment, array $parameters=[], $version='v1.1') {
+    public function publicApi ($segment, array $parameters=[], $version='v1.1') {
         $options = [
             'http' => [
                 'method'  => 'GET',
